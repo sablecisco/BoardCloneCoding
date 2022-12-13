@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 작성폼</title>
+</head>
+
+<style>
+    .layout {
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 40px;
+    }
+
+    .layout > input, textarea {
+        width: 100%;
+        box-sizing: border-box;
+        margin-top; 10px;
+
+    }
+
+    .layout > textarea{
+        width: 100%;
+        margin-top: 10px;
+        min-height: 300px;
+    }
+</style>
+<body>
+    <div class="container">
+        <form th:action method="post" enctype="multipart/form-data">
+            작성자 <input type="text" name="userName">
+            비밀번호 <input type="password" name="password">
+            <br>
+            <br>
+            이미지 파일들<input type="file" multiple="multiple" name="imageFiles" >
+            <br>
+            비밀번호 <input type="text" name="title">
+            <textarea name="content"></textarea>
+            <input type="submit"/>
+        </form>
+    </div> <!-- /container -->
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 보기</title>
+</head>
+
+<style>
+    .layout {
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 40px;
+    }
+
+    .layout > input, textarea {
+        width: 100%;
+        box-sizing: border-box;
+        margin-top; 10px;
+
+    }
+
+    .layout > textarea{
+        width: 100%;
+        margin-top: 50px;
+        min-height: 300px;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="py-5 text-center"> <h2>만화 갤러리</h2>
+    </div>
+
+    작성자 <span th:text="${viewPostForm.username}"></span><br><br>
+
+    제목 <span th:text="${viewPostForm.title}"></span> <br><br>
+
+    첨부파일:
+    <img alt="test" src="file:///Z:/code/folder/5dbeae18-fa11-4ffd-9cf8-672399f5cca5.png" width="300" height="300" />
+<!--    <img th:each="imageFile : ${fileTableList}"-->
+<!--         th:src="${imageFile.getFilePath()}" width="300" height="300"/>-->
+
+    <textarea readonly th:value="${viewPostForm.content}" th:text="${viewPostForm.content}"></textarea>
+</div> <!-- /container -->
+
+</body>
+</html>
