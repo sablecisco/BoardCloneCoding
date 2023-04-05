@@ -7,19 +7,27 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ViewPostForm {
 //일단 이미지는 뺌 못하겠다
-    public String username;
+    public String nickName;
 
-    public String title;
-    public String content;
+    private String title;
+    private String content;
+    private boolean loginFlag = false;
+    private String password;
+    private String ipAddr;
+    private Long postId;
 
-    public ViewPostForm(BasePostEntity baseEntity) {
-        this.username = baseEntity.getUserName();
+    public ViewPostForm(BasePostEntity baseEntity, long postId) {
+        this.nickName = baseEntity.getNickName();
         this.title = baseEntity.getTitle();
         this.content = baseEntity.getContent();
+        this.password = baseEntity.getPassword();
+        if (baseEntity.getPassword() == null) this.loginFlag = true;
+        this.ipAddr = baseEntity.getIpAddr();
+        this.postId = postId;
     }
 
     public ViewPostForm(String userName, String title, String content) {
-        this.username = userName;
+        this.nickName = userName;
         this.title = title;
         this.content = content;
     }

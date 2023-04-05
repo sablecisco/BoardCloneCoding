@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 보기</title>
+</head>
+<body>
+
+<table id="userTable">
+    <thead>
+    <tr>
+        <th>제목</th>
+        <th>작성자</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="list : ${list}">
+         <td>
+             <a th:href="@{/comic/{param1}(param1 = ${list.PostID})}" th:text="${list.PostName}" />
+             <a th:text="${list.PostUserName}"/>
+         </td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/comic/new}"/><button th:type="submit" class="writeNew" type="button">글쓰기</button>
+
+<br>
+<br>
+<br>
+
+<div class="bottom_paging_box iconpaging">
+    <a th:href="@{/comic/list?page=1}">1</a> <a th:href="@{/comic/list?page=2}">2</a> <a th:href="@{/comic/list?page=3}">3</a> <a th:href="@{/comic/list?page=4}">4</a>
+</div>
+
+</body>
+</html>

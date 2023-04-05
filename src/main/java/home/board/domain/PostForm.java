@@ -8,6 +8,8 @@ import java.util.List;
 @Data
 public class PostForm {
     private String userName;
+    private String nickName;
+    private String ipAddr;
     private String password;
     private String title;
     private String content;

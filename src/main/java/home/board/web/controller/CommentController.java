@@ -25,7 +25,9 @@ public class CommentController {
     private final CommentService commentService;
 
     @PostMapping("/{galleryName}/{postId}/comment")
-    public void writeComment(@RequestBody CommentDao commentDao, @PathVariable("galleryName") String galleryName, @PathVariable("postId") long postId, HttpServletResponse response, HttpServletRequest request) throws IOException {
+    public void writeComment(@RequestBody CommentDao commentDao,
+                             @PathVariable("galleryName") String galleryName, @PathVariable("postId") long postId,
+                             HttpServletResponse response, HttpServletRequest request) throws IOException {
         long galleryId = galleryService.findGalleryByName(galleryName);
         if(galleryId == 1) {
             ComicGalleryComments comicGalleryComments = new ComicGalleryComments(postId, commentDao);

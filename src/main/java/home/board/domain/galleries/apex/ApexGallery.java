@@ -1,5 +1,7 @@
 package home.board.domain.galleries.apex;
 
+import home.board.domain.BasePostEntity;
+import home.board.domain.BaseTimeEntity;
 import home.board.domain.PostForm;
 import home.board.domain.dto.ModifyPostDto;
 import home.board.domain.dto.PostDto;
@@ -9,7 +11,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-public class ApexGallery {
+public class ApexGallery extends BasePostEntity {
     @SequenceGenerator(
             name = "apexgall_SEQ_GENERATOR",
             sequenceName = "APEXGALL_SEQ", // 매핑할 데이터베이스 시퀀스 이름
@@ -23,7 +25,13 @@ public class ApexGallery {
     private long gallery_id;
 
     @Column(nullable = false)
-    private String author;
+    private String userName;
+
+    @Column(nullable = false)
+    private String nickName;
+
+    @Column(nullable = false)
+    private String ipAddr;
 
     @Column(nullable = false)
     private String password;
@@ -44,14 +52,14 @@ public class ApexGallery {
 
     public ApexGallery(PostDto postDto, long gallery_id)  {
         this.gallery_id = gallery_id;
-        this.author = postDto.getUserName();
+        this.userName = postDto.getUserName();
         this.password = postDto.getPassword();
         this.title = postDto.getTitle();
         this.content = postDto.getContent();
     }
 
     public void modify(ModifyPostDto modifyPostDto)  {
-        this.author = modifyPostDto.getAuthor();
+        this.userName = modifyPostDto.getAuthor();
         this.password = modifyPostDto.getPassword();
         this.title = modifyPostDto.getTitle();
         this.content = modifyPostDto.getContent();
@@ -59,9 +67,11 @@ public class ApexGallery {
 
     public ApexGallery(PostForm postForm, long gallery_id) {
         this.gallery_id = gallery_id;
-        this.author = postForm.getUserName();
+        this.userName = postForm.getUserName();
         this.password = postForm.getPassword();
         this.title = postForm.getTitle();
         this.content = postForm.getContent();
+        this.nickName = postForm.getNickName();
+        this.ipAddr = postForm.getIpAddr();
     }
 }

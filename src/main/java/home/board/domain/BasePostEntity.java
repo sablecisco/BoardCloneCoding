@@ -20,6 +20,9 @@ public class BasePostEntity {
     private String userName;
 
     @Column(nullable = false)
+    private String nickName;
+
+    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
@@ -27,6 +30,9 @@ public class BasePostEntity {
 
     @Column(columnDefinition = "LONGTEXT")
     private String content;
+
+    @Column(columnDefinition = "LONGTEXT")
+    private String ipAddr;
 
 
 

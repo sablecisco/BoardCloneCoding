@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+<head>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>메인 화면</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+</head>
+
+<header class="p-3 text-bg-dark">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a th:href="@{/}" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a th:href="@{/comic/list?page=1}" class="nav-link px-2 text-secondary">Comic Gallery</a></li>
+                <li><a th:href="@{/apex/list?page=1}"class="nav-link px-2 text-secondary">Apex Gallery</a></li>
+                <li><a th:href="@{/member}" class="nav-link px-2 text-secondary">Member Info</a></li>
+                <li><a th:href="@{/ranks}" class="nav-link px-2 text-secondary">Daily Ranks</a></li>
+            </ul>
+
+            <div class="text-end">
+                <a th:href="@{/login}"/> <button type="button" class="btn btn-outline-dark me-2">Login</button>
+                <a th:href="@{/signUp}"/> <button type="button" class="btn btn-warning">Sign-up</button>
+            </div>
+        </div>
+    </div>
+</header>
+    <body>
+        <a th:href="@{/comic/list?page=1}" th:text="만화갤러리" /> <br>
+        <a th:href="@{/apex/list?page=1}" th:text="에이팩스갤러리" /> <br>
+    </body>
+</html>

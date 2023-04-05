@@ -1,5 +1,6 @@
 package home.board.web.repository;
 
+import home.board.domain.dto.GalleryCommonModel;
 import home.board.domain.galleries.apex.ApexGallery;
 import home.board.domain.galleries.apex.ApexGalleryFileTable;
 import home.board.domain.galleries.comic.ComicGallery;
@@ -8,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import java.lang.reflect.Type;
 import java.util.List;
 
 @Repository
@@ -42,7 +46,7 @@ public class PostRepository {
                 .executeUpdate();
     }
 
-    public void deleteApexgallPost(long postId) {
+    public void deleteApexgalleryPost(long postId) {
         em.createQuery("delete from ApexGallery m where m.id = :postId")
                 .setParameter("postId", postId)
                 .executeUpdate();
@@ -58,7 +62,20 @@ public class PostRepository {
                 .getResultList();
     }
 
+    public List<ApexGalleryFileTable> findApexGalleryFileTableByPost(ApexGallery apexGallery) {
+        return em.createQuery("select c from ApexGalleryFileTable c where c.apexGallery = :apexGallery", ApexGalleryFileTable.class)
+                .setParameter("apexGallery", apexGallery)
+                .getResultList();
+    }
+
     public void saveApexGalleryFileTable(ApexGalleryFileTable fileTable) {
         em.persist(fileTable);
+    }
+
+    public List<GalleryCommonModel> GalleryPaging(int offset, int limit, String galleryName) {
+        return em.createQuery("select new home.board.domain.dto.GalleryCommonModel(m.id, m.title, m.nickName) from " + galleryName + " m order by m.createdDate DESC")
+                .setFirstResult(offset * limit)
+                .setMaxResults(limit)
+                .getResultList();
     }
 }

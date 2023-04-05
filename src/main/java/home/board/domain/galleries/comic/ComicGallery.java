@@ -30,6 +30,12 @@ public class ComicGallery extends BasePostEntity {
     private String userName;
 
     @Column(nullable = false)
+    private String nickName;
+
+    @Column(nullable = false)
+    private String ipAddr;
+
+    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
@@ -67,5 +73,7 @@ public class ComicGallery extends BasePostEntity {
         this.password = postForm.getPassword();
         this.title = postForm.getTitle();
         this.content = postForm.getContent();
+        this.nickName = postForm.getNickName();
+        this.ipAddr = postForm.getIpAddr();
     }
 }

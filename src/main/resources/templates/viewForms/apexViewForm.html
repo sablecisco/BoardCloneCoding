@@ -27,15 +27,15 @@
 </style>
 <body>
 <div class="container">
-    <div class="py-5 text-center"> <h2>만화 갤러리</h2>
+    <div class="py-5 text-center"> <h2>에이팩스 갤러리</h2>
     </div>
 
-    작성자 <span th:text="${viewPostForm.nickName}"></span><br><br>
+    작성자 <span th:text="${viewPostForm.username}"></span><br><br>
+
     제목 <span th:text="${viewPostForm.title}"></span> <br><br>
-    작성 IP <span th:text="${viewPostForm.ipAddr}"></span> <br><br>
 
     첨부파일:
-    <img alt="test" src="Z:/code/folder/5dbeae18-fa11-4ffd-9cf8-672399f5cca5.png" style="width:600px;height:600px;" />
+    <img alt="test" src="Z:\code\PersonalProject\board\board\src\main\resources\templates\images\5dbeae18-fa11-4ffd-9cf8-672399f5cca5.png" style="width:600px;height:600px;" />
 
     <!--    <img alt="test" src=".../images/5dbeae18-fa11-4ffd-9cf8-672399f5cca5.png" width="600" height="600" />-->
 <!--    <img alt="test" src="file:///Z:/code/folder/5dbeae18-fa11-4ffd-9cf8-672399f5cca5.png" style="width:600px;height:600px;" />-->
@@ -45,13 +45,5 @@
     <textarea readonly th:value="${viewPostForm.content}" th:text="${viewPostForm.content}"></textarea>
 </div> <!-- /container -->
 
-<a th:href="@{/comic/new}"/><button th:type="submit" class="writeNew" type="button">글쓰기</button>
-<div>
-    <span th:if="${viewPostForm.password == 'OAUTH2COMMONPASSWORD'}"> <a th:href="@{/comic/userCheck/delete/{param1}(param1 = ${viewPostForm.postId})}"/><button th:type="submit" class="delete" type="button">삭제</button> </span>
-    <span th:if="${viewPostForm.password != null}"> <a th:href="@{/comic/passwordCheck/{param1}(param1 = ${viewPostForm.postId})}"/><button th:type="submit" class="delete" type="button">삭제</button> </span>
-
-
-</div>
-<!--<a th:href="@{/comic/delete/{param1}(param1 = ${viewPostForm.postId})}"/><button th:type="submit" class="delete" type="button">삭제</button>-->
 </body>
 </html>

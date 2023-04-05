@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+  <body>
+  <form th:action="@{/comic/delete/{param1}(param1 = ${postId})}" method="Delete">
+      <button>지우기</button>
+  </form>
+  </body>
+</html>

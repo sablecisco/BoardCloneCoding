@@ -2,6 +2,7 @@ package home.board.web.service;
 
 import home.board.domain.dto.ModifyPostDto;
 import home.board.domain.galleries.apex.ApexGallery;
+import home.board.domain.galleries.apex.ApexGalleryFileTable;
 import home.board.domain.galleries.comic.ComicGallery;
 import home.board.domain.galleries.comic.ComicGalleryFileTable;
 import home.board.web.repository.PostRepository;
@@ -39,10 +40,22 @@ public class PostService {
     }
 
     public void deleteApexGalleryPost(long postId) {
-        postRepository.deleteApexgallPost(postId);
+        postRepository.deleteApexgalleryPost(postId);
     }
 
     public void saveFileComicGallery(ComicGalleryFileTable comicGalleryFileTable) {
         postRepository.saveComicGalleryFileTable(comicGalleryFileTable);
+    }
+
+    public void saveFileApexGallery(ApexGalleryFileTable apexGalleryFileTable) {
+        postRepository.saveApexGalleryFileTable(apexGalleryFileTable);
+    }
+
+    public ComicGallery findComicGalleryPost(long postId) {
+        return postRepository.findByComicGalleryPostId(postId);
+    }
+
+    public ApexGallery findApexGalleryPost(long postId) {
+        return postRepository.findByApexGalleryPostId(postId);
     }
 }

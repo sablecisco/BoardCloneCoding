@@ -1,4 +1,14 @@
 spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 163218418066-jnm8mraepvqfu9f0lkv1i4mpclkc63kp.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile
   datasource:
     url: jdbc:mariadb://localhost:3306/boardSample
     driver-class-name: org.mariadb.jdbc.Driver
@@ -14,3 +24,4 @@ spring:
 logging.level:
   org.hibernate.SQL: debug
 #  org.hibernate.type: trace
+

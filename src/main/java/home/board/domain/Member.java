@@ -1,6 +1,9 @@
 package home.board.domain;
 
+import home.board.domain.dto.SignUpDto;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,23 +13,49 @@ import java.time.LocalDate;
 
 @Entity
 @Getter
-public class Members extends BaseTimeEntity {
+public class Member extends BaseTimeEntity {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "Member_Id")
     private long id;
 
-    @Column(nullable = false)
-    private String nickName;
+    private String provider;
+
+    private String providerId;
 
     @Column(nullable = false)
     private String userName;
 
     @Column(nullable = false)
+    private String nickName;
+
+    @Column(nullable = false)
     private String password;
 
+    private String email;
     private String dob;
     private String age;
+
+    public Member() {
+
+    }
+
+    public Member(SignUpDto signUpDto) {
+        this.userName = signUpDto.getUserName();
+        this.nickName = signUpDto.getNickName();
+        this.password = signUpDto.getPassword();
+    }
+
+    @Builder
+    public Member(String provider, String providerId, String username, String email, String nickname, String password) {
+        this.provider = provider;
+        this.providerId = providerId;
+        this.userName = username;
+        this.nickName = nickname;
+        this.password = password;
+        this.email = email;
+    }
 
     public static int calcAge(String dob) {
         int year = LocalDate.now().getYear();
